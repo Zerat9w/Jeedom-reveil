@@ -189,67 +189,88 @@ $eqLogics = eqLogic::byType('reveil');
 									{{Dimanche}}
 								</label>
 							</div>
-							<div class="col-sm-0 input-group">
+							<div class="input-group">
 								<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Schedule" data-l3key="Heure" >
 									<?php
-										for($loop=0; $loop<24; $loop++){
+										for($loop=0; $loop<24; $loop++)
 											echo '<option value="'.$loop.'">'.$loop.'</option>';
-                                         }
 									?>
 								</select>
 								<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Schedule" data-l3key="Minute" >
 									<?php
-										for($loop=0; $loop<60; $loop++){
+										for($loop=0; $loop<60; $loop++)
 											echo '<option value="'.$loop.'">'.$loop.'</option>';
-                                         }
 									?>
 								</select>
 							</div>
 						</div>
 					</fieldset>
 				</form>
-			</div>	
+			</div>		
 			<div role="tabpanel" class="tab-pane" id="conditiontab">
 				<form class="form-horizontal">
 					<fieldset>
-						<legend>{{Les conditions d'éxécution :}}
+						<legend>{{Les conditions d'exécution :}}
 							<sup>
-								<i class="fa fa-question-circle tooltips" title="Saisir toutes les conditions d'éxécution de la gestion"></i>
+								<i class="fa fa-question-circle tooltips" title="Saisir toutes les conditions d'exécution de la gestion"></i>
 							</sup>
 							<a class="btn btn-success btn-xs conditionAttr" data-action="add" style="margin-left: 5px;">
 								<i class="fa fa-plus-circle"></i>
-								{{Ajouter Condition}}
+								{{Ajouter une Condition}}
 							</a>
 						</legend>
-						<div class="div_Condition"></div>
 					</fieldset>
-				</form>
+				</form>			
+				<table id="table_condition" class="table table-bordered table-condensed">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Condition</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
 			</div>				
 			<div role="tabpanel" class="tab-pane" id="actiontab">
 				<form class="form-horizontal">
 					<fieldset>
-						<legend>{{Liste des équipements à éxécuter:}}
+						<legend>{{Les actions:}}
 							<sup>
-								<i class="fa fa-question-circle tooltips" title="Saisir tous les équipements à éxécuter"></i>
+								<i class="fa fa-question-circle tooltips" title="Saisir toutes les actions à mener à l'ouverture"></i>
 							</sup>
 							<a class="btn btn-success btn-xs ActionAttr" data-action="add" style="margin-left: 5px;">
 								<i class="fa fa-plus-circle"></i>
-								{{Ajouter un équipement}}
+								{{Ajouter une Action}}
 							</a>
 						</legend>
-						<div class="div_action"></div>
 					</fieldset>
-				</form>
+				</form>					
+				<table id="table_action" class="table table-bordered table-condensed">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Action</th>
+							<th>
+								Type de reveil.append
+								<sup>
+									<i class="fa fa-question-circle tooltips" title="Séléctioner le type de réveil"></i>
+								</sup
+							</th>
+							<th>Parametre</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
 			</div>		
 			<div role="tabpanel" class="tab-pane" id="commandtab">	
 				<table id="table_cmd" class="table table-bordered table-condensed">
-					<thead>
+				    <thead>
 					<tr>
-						<th>Nom</th>
-						<th>Paramètre</th>
+					    <th>Nom</th>
+					    <th>Paramètre</th>
 					</tr>
-					</thead>
-					<tbody></tbody>
+				    </thead>
+				    <tbody></tbody>
 				</table>
 			</div>	
 		</div>
