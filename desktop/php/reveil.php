@@ -189,13 +189,15 @@ $eqLogics = eqLogic::byType('reveil');
 									{{Dimanche}}
 								</label>
 							</div>
-							<div class="input-group">
+							<div class="col-sm-1">
 								<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Schedule" data-l3key="Heure" >
 									<?php
 										for($loop=0; $loop<24; $loop++)
 											echo '<option value="'.$loop.'">'.$loop.'</option>';
 									?>
 								</select>
+							</div>	
+							<div class="col-sm-1">
 								<select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="Schedule" data-l3key="Minute" >
 									<?php
 										for($loop=0; $loop<60; $loop++)

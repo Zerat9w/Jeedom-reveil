@@ -308,7 +308,9 @@ class reveil extends eqLogic {
 		return $cron;
 	}
 	public function EvaluateCondition(){
-		foreach($this->getConfiguration('Conditions') as $condition){
+		foreach($this->getConfiguration('Conditions') as $condition){			
+			if (isset($condition['enable']) && $condition['enable'] == 0)
+				continue;
 			$expression = scenarioExpression::setTags($condition['expression']);
 			$message = __('Evaluation de la condition : [', __FILE__) . trim($expression) . '] = ';
 			$result = evaluate($expression);
