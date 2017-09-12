@@ -154,7 +154,7 @@ class reveil extends eqLogic {
         			log::add('reveil','debug','Cron manquant on sort');
 				exit;
 			} else  {
-				log::add('reveil','debug','Cron OK on continu');				
+				log::add('reveil','debug','Cron OK on continue');				
 			}
 			if($reveil->EvaluateCondition()){
 				if($reveil->getConfiguration('isHolidays') && $reveil->isHolidays())
@@ -174,12 +174,13 @@ class reveil extends eqLogic {
 					}
 				}
 			}
+			$reveil->NextStart();
 		}
 	}
 	public function removeSimulAubeDemon($_option){
 		$cron = cron::byClassAndFunction('reveil', 'SimulAubeDemon',$_option);
 		if(is_object($cron)) {
-			log::add('reveil','debug','On termine le daemon de simualtion');
+			log::add('reveil','debug','On termine le daemon de simulation');
 			$cron->stop();
 			$cron->remove();
 		}
