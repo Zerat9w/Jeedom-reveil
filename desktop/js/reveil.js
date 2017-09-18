@@ -42,7 +42,6 @@ function printEqLogic(_eqLogic) {
 				addAction(_eqLogic.configuration.Equipements[index],$('#actiontab').find('table tbody'));
 		}
 	}	
-	$('.DawnSimulatorEngine').hide();
 }
 function addCmdToTable(_cmd) {
 	var tr =$('<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">');
@@ -124,6 +123,7 @@ function addAction(_action,  _el) {
 		.append($('<input type="text" class="DawnSimulatorEngine expressionAttr form-control" data-l1key="configuration" data-l2key="DawnSimulatorEngineDuration" placeholder="{{Durée de la simulation}}"/>')));
 	_el.append(tr);
         _el.find('tr:last').setValues(_action, '.expressionAttr');
+	_el.find('tr:last .DawnSimulatorEngine').hide();
 }
 $('#tab_zones a').click(function(e) {
     e.preventDefault();
@@ -143,7 +143,7 @@ $('body').on('click','.conditionAttr[data-action=remove]',function(){
 	$(this).closest('tr').remove();
 });
 $('body').on('click','.listCmdCondition',function(){
-	var el = $(this).closest('.form-group').find('.expressionAttr[data-l1key=expression]');	
+	var el = $(this).closest('tr').find('.expressionAttr[data-l1key=expression]');	
 	jeedom.cmd.getSelectModal({cmd: {type: 'info'}}, function (result) {
 		var message = 'Aucun choix possible';
 		if(result.cmd.subType == 'numeric'){
@@ -279,7 +279,7 @@ $('body').on('click','.ActionAttr[data-action=remove]',function(){
 	$(this).closest('tr').remove();
 });
 $("body").on('click', ".listAction", function() {
-	var el = $(this).closest('.form-group').find('.expressionAttr[data-l1key=cmd]');
+	var el = $(this).closest('tr').find('.expressionAttr[data-l1key=cmd]');
 	jeedom.getSelectActionModal({}, function (result) {
 		el.value(result.human);
 		jeedom.cmd.displayActionOption(el.value(), '', function (html) {
@@ -288,7 +288,7 @@ $("body").on('click', ".listAction", function() {
 	});
 }); 
 $("body").on('click', ".listCmdAction", function() {
-	var el = $(this).closest('.form-group').find('.expressionAttr[data-l1key=cmd]');
+	var el = $(this).closest('tr').find('.expressionAttr[data-l1key=cmd]');
 	jeedom.cmd.getSelectModal({cmd: {type: 'action'}}, function (result) {
 		el.value(result.human);
 		jeedom.cmd.displayActionOption(el.value(), '', function (html) {

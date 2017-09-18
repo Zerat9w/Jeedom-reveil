@@ -337,10 +337,10 @@ class reveil extends eqLogic {
 		$offset=0;
 		if(date('H') > $ConigSchedule["Heure"])
 			$offset++;
-		if(date('H') == $ConigSchedule["Heure"] && date('i') > $ConigSchedule["Minute"])	
+		if(date('H') == $ConigSchedule["Heure"] && date('i') >= $ConigSchedule["Minute"])	
 			$offset++;
 		for($day=0;$day<7;$day++){
-			if($ConigSchedule[date('w')+$day]){
+			if($ConigSchedule[date('w')+$day+$offset]){
 				$offset+=$day;
 				$timestamp=mktime ($ConigSchedule["Heure"], $ConigSchedule["Minute"], 0, date("n") , date("j") , date("Y"))+ (3600 * 24) * $offset;
 				if($this->getConfiguration('isHolidays') && $this->isHolidays($timestamp))
