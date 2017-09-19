@@ -95,8 +95,9 @@ function addAction(_action,  _el) {
 				.append($('<a class="btn btn-success btn-sm listAction" title="Sélectionner un mot-clé">')
 					.append($('<i class="fa fa-tasks">')))
 				.append($('<a class="btn btn-success btn-sm listCmdAction data-type="action"">')
-					.append($('<i class="fa fa-list-alt">')))))
-	       .append($(jeedom.cmd.displayActionOption(init(_action.cmd, ''), _action.options))));
+					.append($('<i class="fa fa-list-alt">')))))	
+		.append($('<div class="actionOptions">')
+	       		.append($(jeedom.cmd.displayActionOption(init(_action.cmd, ''), _action.options)))));
 	tr.append($('<td>')
 	 	.append($('<select class="expressionAttr" data-l1key="configuration" data-l2key="ReveilType">')
 			.append($('<option value="default">')
@@ -283,7 +284,7 @@ $("body").on('click', ".listAction", function() {
 	jeedom.getSelectActionModal({}, function (result) {
 		el.value(result.human);
 		jeedom.cmd.displayActionOption(el.value(), '', function (html) {
-			el.closest('.form-group').find('.actionOptions').html(html);
+			el.closest('td').find('.actionOptions').html(html);
 		});
 	});
 }); 
@@ -292,7 +293,7 @@ $("body").on('click', ".listCmdAction", function() {
 	jeedom.cmd.getSelectModal({cmd: {type: 'action'}}, function (result) {
 		el.value(result.human);
 		jeedom.cmd.displayActionOption(el.value(), '', function (html) {
-			el.closest('.form-group').find('.actionOptions').html(html);
+			el.closest('td').find('.actionOptions').html(html);
 		});
 	});
 });
