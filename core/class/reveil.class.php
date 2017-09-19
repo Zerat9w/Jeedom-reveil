@@ -42,7 +42,6 @@ class reveil extends eqLogic {
 				$cron->remove();						
 				$cron = cron::byClassAndFunction('reveil', 'SimulAubeDemon');
 			}
-				
 		}
 	}
 	public function postSave() {
@@ -67,7 +66,7 @@ class reveil extends eqLogic {
 				$cron->remove();
 		}
 	}
-	public function postRemove() {
+	public function preRemove() {
 		$cron = cron::byClassAndFunction('reveil', 'pull',array('id' => $this->getId()));
 		if (is_object($cron)) 	
 			$cron->remove();
